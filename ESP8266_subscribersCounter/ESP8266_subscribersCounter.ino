@@ -2,6 +2,11 @@
 // by Alexander Noyanov
 // mail: alex.noyanov@gmail.com 
 
+/* Code sources:
+ *  Printing numbers on LCD: http://robocraft.ru/blog/3070.html
+ *  Get numbers of followers: https://www.instructables.com/id/DIY-Subscribers-Counter-for-Instagram-Instuctables/
+ *  
+ * */
 
 #include <LiquidCrystal_I2C.h>
 #include "InstagramStats.h"       // https://github.com/witnessmenow/arduino-instagram-stats
