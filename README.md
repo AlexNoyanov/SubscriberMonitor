@@ -1,2 +1,2 @@
-# SubscriberMonitor
-Instagram subscriber monitor
+# SubscribersMonitor
+Instagram subscribers monitor
