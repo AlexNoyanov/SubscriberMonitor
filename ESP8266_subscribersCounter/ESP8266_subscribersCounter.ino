@@ -2,13 +2,23 @@
 // by Alexander Noyanov
 // mail: alex.noyanov@gmail.com 
 
+// Version 1.0
+
+// TODO list:
+/*  - Sound of new subscriber and sad sound for unsubsubscribed 
+ *  - Monitoring not one but multiple subscribers (friends or someone)
+ *  - Cool effect "Countdown": number of subscribers increasing from zero to number by the following time  
+ *  - Designing 3D printed case for this project 
+ *  - Design PCB for ESP8266
+ */
+
 /* Code sources:
  *  Printing numbers on LCD: http://robocraft.ru/blog/3070.html
  *  Get numbers of followers: https://www.instructables.com/id/DIY-Subscribers-Counter-for-Instagram-Instuctables/
  *  
  * */
 
-#include <LiquidCrystal_I2C.h>
+#include <LiquidCrystal_I2C.h>    // 
 #include "InstagramStats.h"       // https://github.com/witnessmenow/arduino-instagram-stats
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
@@ -22,7 +32,6 @@ WiFiClientSecure secureClient;
 WiFiClient client;
 
 InstagramStats instaStats(secureClient);
-
 
 unsigned long api_delay = 1 * 60000; //time between api requests (1mins)
 unsigned long api_due_time;
@@ -140,12 +149,20 @@ void setup() {
     // sets the LCD's rows and colums:
   lcd.clear();  
 
-   Serial.begin(115200);
+  Serial.begin(115200);
 
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   delay(100);
   Serial.print("Connecting Wifi: ");
+  lcd.setCursor(0,0);
+  lcd.print("=Instagram monitor=");
+  lcd.setCursor(0,2);
+  lcd.print(" =By Alex Noyanov=");
+  lcd.setCursor(0,3);
+  lcd.print("    Version 1.0  ");
+  delay(1000);
+  lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("connecting to wi-fi");
   Serial.println(ssid);
@@ -342,32 +359,23 @@ void printNumberLCD(int num,int x,String nme){
 }
 
   void getInstagramStatsForUser() {
-  Serial.println("Getting instagram user stats for " + userName );
-  InstagramUserStats response = instaStats.getUserStats(userName);
-  Serial.println("Response:");
-  Serial.print("Number of followers: ");
-  Serial.println(response.followedByCount);
-  uint16_t hi = response.followedByCount / 10000, // Value on left (high digits) display
+   Serial.println("Getting instagram user stats for " + userName );
+   InstagramUserStats response = instaStats.getUserStats(userName);
+   Serial.println("Response:");
+   Serial.print("Number of followers: ");
+   Serial.println(response.followedByCount);
+   uint16_t hi = response.followedByCount / 10000, // Value on left (high digits) display
            lo = response.followedByCount % 10000; // Value on right (low digits) display
-  //return response.followedByCount;
-
-  printNumberLCD(response.followedByCount,4,userName);
-  
+           
+   printNumberLCD(response.followedByCount,4,userName);  // Printing on the screen 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
- // printNumberLCD(123,0);
+// Updating status every minute:
  if (millis() > api_due_time)  {
   getInstagramStatsForUser();
     delay(200);
-  //getInstagramStatsForUser2();
   api_due_time = millis() + api_delay;
- 
-  //for(int i = 100; i < 999; i++){
-  //  printNumberLCD(i,4,"alex_noyanov");
-  //  delay(1000);
-  // }
  }
 
 }
