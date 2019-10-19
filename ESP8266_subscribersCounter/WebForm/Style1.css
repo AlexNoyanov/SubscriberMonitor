@@ -1,0 +1,82 @@
+strong {color: red;}
+
+/* Кнопка */
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #618EEF;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  /*margin: 4px 2px; */
+  cursor: pointer;
+  border-radius: 0px;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-left: 40px
+}
+
+/* Форма для заголовка */
+div{
+    background-color: #618EEF;
+    width: 550px;
+    height: 50px;
+    padding:15px;
+   
+    margin-top: 0px;
+   
+}
+/* Большой верхий заголовок*/
+p.btitle{
+    color:white;
+    font-family: "Arial", Helvetica, Sans-serif;
+    font-size: 20px;
+    margin: 20px;
+    font-weight: bold;
+}
+
+/* Стиль для маленьких шрифтов */
+p.light{
+    color:black;
+    font-family: "Arial", Helvetica, sans-serif;
+    font-size: 20px;
+    margin-top:15px;
+    margin-bottom:20px;
+    margin-left: 40px;
+    font-weight: 100;
+}
+
+/* Поле ввода 1*/
+input.f1[type="text"] {    /* Поле ввода имени */
+      width: 400PX;
+      display: block;
+      background:white;     /* Цвет поля ввода */
+      color:black;          /* Цвет текста */
+      text-align:justiy;
+      font-size: 150%;
+      font-family: Tahoma;        /* Стиль шрифта */
+      border: 0px solid #39c;      /* Рамка  */
+      
+      /*padding:30px; */
+      margin-left:40px;
+      
+      box-shadow:
+      0px 2px 0px 0px red; /* <Х,У, размытие, тольщина рамки, цвет>*/
+      /*-5px 0px 0px 5px blue;*/
+  }
+input.f2[type = "text"]{   /* Поле ввода фамилии */
+    width: 400PX;
+    display: block;
+    background:white; /* Цвет поля ввода */
+    color:black;      /* Цвет текста */
+    margin-left: 40px;      /* Сдвиг вправо */
+                       
+    text-align:justiy;
+    font-size: 150%;
+    font-family: Tahoma;        /* Стиль шрифта */
+    border: 1px solid #39c;      /* Рамка  */
+    box-shadow:
+    0px 2px 0px 0px purple; /* <Х,У, размытие, тольщина рамки, цвет>*/
+    /*-5px 0px 0px 5px blue; */
+}
+
+
