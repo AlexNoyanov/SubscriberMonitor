@@ -24,8 +24,8 @@
 #include <WiFiClientSecure.h>
 
 //------- Replace the following! ------
-char ssid[] = "iPhone (Alex)";       // your network SSID (name)
-char password[] = "alexpass";        // your network key
+char ssid[] = "MGTS_70";       // your network SSID (name)
+char password[] = "M2F3B9RX";        // your network key
 String userName = "alex_noyanov";    // from their instagram url https://www.instagram.com/userName/
 
 WiFiClientSecure secureClient;
@@ -358,9 +358,9 @@ void printNumberLCD(int num,int x,String nme){
    lcd.print(nme);
 }
 
-  void getInstagramStatsForUser() {
-   Serial.println("Getting instagram user stats for " + userName );
-   InstagramUserStats response = instaStats.getUserStats(userName);
+  void getInstagramStatsForUser(String usrName) {
+   Serial.println("Getting instagram user stats for " + usrName );
+   InstagramUserStats response = instaStats.getUserStats(usrName);
    Serial.println("Response:");
    Serial.print("Number of followers: ");
    Serial.println(response.followedByCount);
@@ -373,7 +373,7 @@ void printNumberLCD(int num,int x,String nme){
 void loop() {
 // Updating status every minute:
  if (millis() > api_due_time)  {
-  getInstagramStatsForUser();
+  getInstagramStatsForUser(userName);
     delay(200);
   api_due_time = millis() + api_delay;
  }
