@@ -19,9 +19,11 @@
  * */
 
 #include <LiquidCrystal_I2C.h>    // 
-#include "InstagramStats.h"       // https://github.com/witnessmenow/arduino-instagram-stats
+#include "InstagramStats.h"     // https://github.com/witnessmenow/arduino-instagram-stats
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
+
+#include "Font/Font.hpp"
 
 //------- Replace the following! ------
 char ssid[] = "MGTS_70";       // your network SSID (name)
