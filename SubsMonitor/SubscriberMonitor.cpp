@@ -1,5 +1,6 @@
 //
 //  SubscriberMonitor.cpp
+//
 //  
 //
 //  Created by Alex Noyanov on 05.08.19.
@@ -13,10 +14,8 @@
 void BeginLCD2004I2C();
 void OLEDBegin();
 
-
 void Monitor::addUser(string userName){
     Names.pushBack(userName);           // Adding userName to the vector
-    
 }
 
 void Monitor::removeUser(string userName){
@@ -51,7 +50,7 @@ void Monitor::begin(string userName)
     
 }
 
-int Monitor::GetSubscribersInstagram(string userName){
+int Monitor::GetSubscribersInstagram(string userName){  // Updating statistics of subscribers on Instagram for everybody
     int k = 0;
     for(auto s:Names){
         if(s == userName){
@@ -62,7 +61,6 @@ int Monitor::GetSubscribersInstagram(string userName){
     }
     
     return subscribersInstagram[k];
-    
 }
 
 

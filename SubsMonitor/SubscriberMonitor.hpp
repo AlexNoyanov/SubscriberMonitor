@@ -37,11 +37,11 @@
 // The main class itself:
 class Monitor(){
 private:
-    vector<int> subscribersInsragram; // Numbers of subscribers in different social medias (Instagram, Twitter, Facebook)
+    vector<int> subscribersInsragram;  // Numbers of subscribers in different social medias (Instagram, Twitter, Facebook)
     vector<int> subscribersTwitter;
     vector<int> subscribersFacebook;
-    string screenType;                // Type of the monitor screen used in this monitor
-    vector<string> Names;             // Names of the users you want to monitoring
+    string screenType;                 // Type of the monitor screen used in this monitor
+    vector<string> Names;              // Names of the users you want to monitoring
     
     map<string,int> InstagramSubscribers;
     
@@ -52,7 +52,7 @@ public:
     void begin(string userName);                                      // Seting up the monitor for the screen
     void addUser(string userName);                                    // Adding new user to the monitor
     void removeUser(string userName);
-    int GetSubscribersInstagram(string userName);                     // Get number of subscribers in the Instagram for user userName
+    int  GetSubscribersInstagram(string userName);                    // Get number of subscribers in the Instagram for user userName
     void updateSubscribersInstagram();                                // Updating statistics of subscribers on Instagram for everybody
     void printSubscribersInstagramLCD2004(string userName);           // Print Instagram subscribers on the screen
     void printSubscribers(string userName);
