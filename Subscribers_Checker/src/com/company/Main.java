@@ -22,38 +22,36 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
 
-        String replyText;
+        String replyText = "";
 
         try{
-        String passwrdType = "ledon";
-        boolean isGettingPassword = true;
-        final String USER_AGENT = "Mozilla/5.0";
-        String serverPath = "https://www.instagram.com/alex_noyanov/";
-        URL pwrOff = new URL(serverPath);
-        HttpURLConnection yc = (HttpURLConnection) pwrOff.openConnection();
-        yc.setRequestMethod("GET");
-        yc.setRequestProperty("User-Agent", USER_AGENT);
-        int responseCode = yc.getResponseCode();
-        if (responseCode == HttpURLConnection.HTTP_OK) { // success
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    yc.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
+    
+            final String USER_AGENT = "Mozilla/5.0";
+            String serverPath = "https://www.instagram.com/alex_noyanov/";
+            URL pwrOff = new URL(serverPath);
+            HttpURLConnection yc = (HttpURLConnection) pwrOff.openConnection();
+            yc.setRequestMethod("GET");
+            yc.setRequestProperty("User-Agent", USER_AGENT);
+            int responseCode = yc.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) { // success
+                BufferedReader in = new BufferedReader(new InputStreamReader(
+                        yc.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
 
 
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-                System.out.println(inputLine);
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                    System.out.println(inputLine);
+                }
+                in.close();
+                // print result
+                //System.out.println(response.toString());
+            } else {
+                System.out.println("GET request not worked");
             }
-            in.close();
-            // print result
-            //System.out.println(response.toString());
-        } else {
-            System.out.println("GET request not worked");
-        }
-        replyText = "command executed ok. Turned ON";
+            replyText = "command executed ok. Turned ON";
     } catch (Exception e) {
         replyText = "error:" + e.getLocalizedMessage();
     }
