@@ -1,3 +1,6 @@
 # Default ignored files
 /workspace.xml
 *.txt
+
+/out/production/Subscribers_Checker/com/company/mySQLpassword.txt
+/src/com/company/mySQLpassword.txt
