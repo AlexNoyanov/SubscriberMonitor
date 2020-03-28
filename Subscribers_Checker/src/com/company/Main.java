@@ -39,7 +39,9 @@ public class Main {
         String userName = "alex_noyanov";                                              // Name of the user's page
 
         try{
-            PrintWriter out = new PrintWriter("/Users/anoyanov/Work/SubscriberMonitor-Git/Subscribers_Checker/src/com/company/userPage.txt");             // To load page to the text file
+            //PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
+            // Creating text file for user:
+            PrintWriter out = new PrintWriter("/Users/anoyanov/Work/SubscriberMonitor-Git/Subscribers_Checker/src/com/company/"+userName+".txt");             // To load page to the text file
             final String USER_AGENT = "Mozilla/5.0";
             String serverPath = "https://www.instagram.com/"+userName+"/?__a=1";
             // Trying other method:
@@ -74,7 +76,8 @@ public class Main {
     }
 
     // Now JSON with all user parameters saved to the text file, getting number of subscribers from this .txt file
-
+        FileSearcher myFSearcher = new FileSearcher();
+        System.out.println(myFSearcher.subscribersNumber(userName));
 
 
     }
