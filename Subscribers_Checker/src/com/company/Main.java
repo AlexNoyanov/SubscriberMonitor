@@ -41,9 +41,9 @@ public class Main {
         try{
             PrintWriter out = new PrintWriter("/Users/anoyanov/Work/SubscriberMonitor-Git/Subscribers_Checker/src/com/company/userPage.txt");             // To load page to the text file
             final String USER_AGENT = "Mozilla/5.0";
-
+            String serverPath = "https://www.instagram.com/"+userName+"/?__a=1";
             // Trying other method:
-            String serverPath = "https://www.instagram.com/web/search/topsearch/?query={" + userName + "}";          // Server path to get JSON4
+            //String serverPath = "https://www.instagram.com/web/search/topsearch/?query={" + userName + "}";          // Server path to get JSON4
             // Can't connect directly to the page:
             // String serverPath = "https://www.instagram.com/"+userName+"/";          // Server path
             URL pageUrl = new URL(serverPath);                                         // URL
