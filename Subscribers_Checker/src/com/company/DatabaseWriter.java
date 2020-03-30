@@ -1,5 +1,6 @@
 package com.company;
 
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -41,30 +42,32 @@ public class DatabaseWriter {
 
 
     DatabaseWriter(){
-        // Reading password to the database
-        StringBuilder contentBuilder = new StringBuilder();
-        String dataPath = "/Users/anoyanov/Work/SubscriberMonitor-Git/Subscribers_Checker/src/com/company/mySQLpassword.txt";
-        try (Stream<String> stream = Files.lines( Paths.get(dataPath), StandardCharsets.UTF_8)){
-            stream.forEach(s -> contentBuilder.append(s).append("\n"));
-            //System.out.println(stream);
-        } catch (IOException e) {
-            e.printStackTrace();
+        // Getting database password from file
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("/Users/anoyanov/Work/SubscriberMonitor-Git/Subscribers_Checker/src/com/company/mySQLpassword.txt"));
+            String sqlPassword = lines.get(0);          // MySQL password (Third one in the text file)
+            databasePassword = sqlPassword;
+            //System.out.println(databasePassword);
+        }catch(Exception e){
+
         }
-        //System.out.println(contentBuilder.toString()); // For testing
-        databasePassword = contentBuilder.toString();    // Initializing password
-        System.out.println(databasePassword);
 
     }
 
 
     // To write basic data to this simple table
      public void writeDataSimple(String userName, String date, int subsNumber){
-         try {
-             Class.forName("com.mysql.jdbc.Driver");     // To set up timezone: SET GLOBAL time_zone = '+3:00';
+         //try {
+             //Class.forName("com.mysql.jdbc.Driver");     // To set up timezone: SET GLOBAL time_zone = '+3:00';
              try {
+                 //Class.forName("com.mysql.jdbc.Driver");     // To set up timezone: SET GLOBAL time_zone = '+3:00';
+                 //Connection con = DriverManager.getConnection("jdbc:mysql://localhost/?user=root&password="+databasePassword);
+                  //jdbc:mysql://localhost/db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Moscow
+                // Statement stmt = con.createStatement();
+
                  Connection con = DriverManager.getConnection("jdbc:mysql://localhost/Subscribers", "root", databasePassword); // Connecting to MySQL:
                  Statement stmt = con.createStatement();
-                 String request = "INSERT INTO SimpleSubscribers(FullName,Subscribers,Date) values('"+ userName + "'," + subsNumber + ",'" + date + "'";
+                 String request = "INSERT INTO SimpleSubscribers(FullName,Subscribers,Date) values('"+ userName + "'," + subsNumber + ",'" + date + "'" + ");";
 
                  System.out.println("MySQL REQUEST:");
                  System.out.println(request);
@@ -73,13 +76,13 @@ public class DatabaseWriter {
 
                  con.close();
 
-             } catch (SQLException e) {
+             } catch (Exception e) {
                  e.printStackTrace();
              }
 
-         } catch (ClassNotFoundException e) {
-             e.printStackTrace();
-         }
+         //} catch (ClassNotFoundException e) {
+         //    e.printStackTrace();
+         //}
 
      }
 
