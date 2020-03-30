@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -77,8 +79,18 @@ public class Main {
 
     // Now JSON with all user parameters saved to the text file, getting number of subscribers from this .txt file
         FileSearcher myFSearcher = new FileSearcher();
+        int subsNumber = myFSearcher.subscribersNumber(userName);
         System.out.println(myFSearcher.subscribersNumber(userName));
 
+        // Getting date for database request:
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String currentDate = now.toString();
+
+
+        // Writing all data to the database with DatabaseWriter:
+        DatabaseWriter myWriter = new DatabaseWriter();
+        myWriter.writeDataSimple(currentDate, userName, subsNumber);
 
     }
 }
