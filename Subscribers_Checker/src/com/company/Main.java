@@ -94,13 +94,16 @@ public class Main {
                         }
                         replyText = "Page successfully downloaded!";
                     } catch (Exception e) {
-                        replyText = "error:" + e.getLocalizedMessage();                             // Catching exceptions
+                        replyText = "error:" + e.getLocalizedMessage();                         // Catching exceptions
                     }
 
                     // Now JSON with all user parameters saved to the text file, getting number of subscribers from this .txt file
                     FileSearcher myFSearcher = new FileSearcher();
-                    int subsNumber = myFSearcher.subscribersNumber(userName);
+                    int subsNumber = myFSearcher.subscribersNumber(userName);                   // Number of Subscribers
                     System.out.println(myFSearcher.subscribersNumber(userName));
+
+                    // Testing fullName to find:
+                    String fullUserName = myFSearcher.FullName(userName);                       // Full name from the description on the page
 
                     // Getting date for database request:
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
