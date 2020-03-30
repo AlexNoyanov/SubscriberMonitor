@@ -58,9 +58,9 @@ public class FileSearcher {
 
 
     // To get value from the index in the string:
-    private String GetFromSearch(String toIgnoreStr, int index){
+    private String GetFromSearch(String toIgnoreStr, int index, char toStop){
         String value = "";
-        for(int i = index + toIgnoreStr.length(); fileString.charAt(i) != '}'; i++){
+        for(int i = index + toIgnoreStr.length(); fileString.charAt(i) != toStop; i++){
             //subscribersNumber.concat(String.valueOf(fileString.charAt(i)));
             value = value+ fileString.charAt(i);
         }
@@ -75,7 +75,7 @@ public class FileSearcher {
 
         String subscribersNumberString = "";                                                // String where result printing
         int intIndex = toFindIndex(fileName, toFind);                                       // Index of the beginning
-        subscribersNumberString = GetFromSearch(toFind, intIndex);                          // Ignoring toFind and getting value
+        subscribersNumberString = GetFromSearch(toFind, intIndex,'}');                          // Ignoring toFind and getting value
         System.out.println("Number of Subscribers = " + subscribersNumberString);
 
         int numberOfsubscribers = Integer.parseInt(subscribersNumberString);
@@ -94,7 +94,7 @@ public class FileSearcher {
 ////            //subscribersNumber.concat(String.valueOf(fileString.charAt(i)));
 ////            fullName = fullName + fileString.charAt(i);
 ////        }
-        fullName = GetFromSearch(toFind, intIndex);
+        fullName = GetFromSearch(toFind, intIndex,',');
 
         System.out.println("Full Name = " + fullName);
         return fullName;
