@@ -100,5 +100,10 @@ public class FileSearcher {
         return fullName;
     }
 
+    public String GetProfilePicture(){
+        String photoUrl = "";
+        return photoUrl;
+    }
+
 
 }

@@ -52,6 +52,9 @@ public class Main {
         //String userName = "alex_noyanov";                                              // Name of the user's page
         try {
 
+
+            // Updating database with
+
             while(true) {
 
                 System.out.print("Database update #");                                    // Printing number of updates
