@@ -32,6 +32,7 @@ import java.util.stream.Stream;
     Queris to mySQL:
 Creating simple sunbscribers table:
 mysql> CREATE TABLE SimpleSubscribers(id INT PRIMARY KEY AUTO_INCREMENT, FullName VARCHAR(32),Subscribers INT, Date VARCHAR(64));
+
 Adding values to this table:
 
  */
@@ -65,7 +66,7 @@ public class DatabaseWriter {
                   //jdbc:mysql://localhost/db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Moscow
                 // Statement stmt = con.createStatement();
 
-                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/Subscribers", "root", databasePassword); // Connecting to MySQL:
+                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/Subscribers ?useUnicode=true&serverTimezone=UTC", "root", databasePassword); // Connecting to MySQL:
                  Statement stmt = con.createStatement();
                  String request = "INSERT INTO SimpleSubscribers(FullName,Subscribers,Date) values('"+ userName + "'," + subsNumber + ",'" + date + "'" + ");";
 
