@@ -19,7 +19,7 @@
  * */
 
 #include <LiquidCrystal_I2C.h>    // 
-#include "InstagramStats.h"     // https://github.com/witnessmenow/arduino-instagram-stats
+#include "InstagramStats.h"     // https://github.com/witnessmenow/arduino-instagram-stats + https://github.com/squix78/json-streaming-parser
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
 
