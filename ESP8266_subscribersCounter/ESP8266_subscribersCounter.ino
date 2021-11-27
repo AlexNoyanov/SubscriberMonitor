@@ -26,8 +26,8 @@
 #include "Font/Font.hpp"
 
 //------- Replace the following! ------
-char ssid[] = "MGTS_70";       // your network SSID (name)
-char password[] = "M2F3B9RX";        // your network key
+char ssid[] = "iPhone";       // your network SSID (name)
+char password[] = "alexpassword1";        // your network key
 String userName = "alex_noyanov";    // from their instagram url https://www.instagram.com/userName/
 
 WiFiClientSecure secureClient;
@@ -35,7 +35,7 @@ WiFiClient client;
 
 InstagramStats instaStats(secureClient);
 
-unsigned long api_delay = 1 * 60000; //time between api requests (1mins)
+unsigned long api_delay = 0.1 * 60000; //time between api requests (1mins)
 unsigned long api_due_time;
 
 LiquidCrystal_I2C lcd(0x27,20,4);    // set the LCD address to 0x27 for a 16 chars and 2 line display
@@ -363,7 +363,8 @@ void printNumberLCD(int num,int x,String nme){
   void getInstagramStatsForUser(String usrName) {
    Serial.println("Getting instagram user stats for " + usrName );
    InstagramUserStats response = instaStats.getUserStats(usrName);
-   Serial.println("Response:");
+   Serial.print("Response:");
+   Serial.println(String(response));
    Serial.print("Number of followers: ");
    Serial.println(response.followedByCount);
    uint16_t hi = response.followedByCount / 10000, // Value on left (high digits) display
